@@ -7,7 +7,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 dotenv.config();
 
-const port = 9000;
+const port = 3010;
 const apiUrl = process.env.API_URL;
 app.use(express.static("public"));
 
@@ -36,6 +36,6 @@ app.post("/api/users", jsonParser, (req: Request, res: Response) => {
   res.end();
 });
 
-app.listen(9000, () => {
+app.listen(port, () => {
   console.log("Server started listening: ", port);
 });
