@@ -1,5 +1,5 @@
+const apiUrl = localStorage.getItem("apiUrl");
 const fetchdata = async () => {
-  const apiUrl = localStorage.getItem("apiUrl");
   if (apiUrl) {
     const respone = await fetch(`${apiUrl}/users`);
     const data = await respone.json();
@@ -10,3 +10,11 @@ const fetchdata = async () => {
 };
 
 fetchdata();
+
+const uploadFile = async () => {
+  const respone = await fetch(`${apiUrl}/users`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ test: "hello" }),
+  });
+};

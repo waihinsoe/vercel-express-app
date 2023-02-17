@@ -1,6 +1,10 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
+import bodyParser from "body-parser";
 const app = express();
+const jsonParser = bodyParser.json();
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 dotenv.config();
 
 const port = 9000;
@@ -26,6 +30,10 @@ app.get("/api", (req: Request, res: Response) => {
 
 app.get("/api/users", (req: Request, res: Response) => {
   res.send({ name: "user1", email: "user1@gmail.com", age: 30 });
+});
+
+app.post("/api/users", jsonParser, (req: Request, res: Response) => {
+  res.end();
 });
 
 app.listen(9000, () => {
